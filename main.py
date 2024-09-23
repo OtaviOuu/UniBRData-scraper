@@ -14,18 +14,7 @@ def main():
         "undergraduate",
     )
 
-    if not os.path.exists(undergraduate_path):
-        print(f"Path does not exist: {undergraduate_path}")
-        return
-
-    process = CrawlerProcess(
-        settings={
-            "FEED_URI": "data.json",
-            "FEED_FORMAT": "json",
-            "FEED_EXPORT_ENCODING": "utf-8",
-            "LOG_LEVEL": "INFO",  # Para ver logs
-        }
-    )
+    process = CrawlerProcess()
 
     for filename in os.listdir(undergraduate_path):
         if filename.endswith(".py") and filename != "__init__.py":

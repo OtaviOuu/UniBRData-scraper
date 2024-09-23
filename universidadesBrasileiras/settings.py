@@ -1,3 +1,7 @@
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 # Scrapy settings for universidadesBrasileiras project
 #
 # For simplicity, this file contains only settings considered important or
@@ -62,9 +66,15 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    "universidadesBrasileiras.pipelines.UniversidadesbrasileirasPipeline": 300,
-#}
+ITEM_PIPELINES = {
+    #"universidadesBrasileiras.pipelines.cleaning.RemoveFoo": 300,
+    "universidadesBrasileiras.pipelines.mongodb.MongoDBPipeline": 400,
+    
+}
+
+MONGODB_URI = os.getenv('MONGODB_URI')
+MONGODB_DATABASE = 'universidades_brasil'
+
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -73,7 +83,7 @@ ROBOTSTXT_OBEY = True
 #AUTOTHROTTLE_START_DELAY = 5
 # The maximum download delay to be set in case of high latencies
 #AUTOTHROTTLE_MAX_DELAY = 60
-# The average number of requests Scrapy should be sending in parallel to
+# The average number of requests Scrapy should be sending in parallel to 
 # each remote server
 #AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
 # Enable showing throttling stats for every response received:

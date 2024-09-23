@@ -14,4 +14,3 @@ class UniversidadesbrasileirasItem(Item):
     city = Field()
     state = Field()
     
-    pass

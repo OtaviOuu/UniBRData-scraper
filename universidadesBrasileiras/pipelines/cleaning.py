@@ -8,6 +8,8 @@
 from itemadapter import ItemAdapter
 
 
-class UniversidadesbrasileirasPipeline:
+class RemoveFoo:
     def process_item(self, item, spider):
-        return item
+        print("=========================================================")
+        print(item)
+        #return item
