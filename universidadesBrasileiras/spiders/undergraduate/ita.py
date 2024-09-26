@@ -16,7 +16,7 @@ class ITA(Spider):
     def extractPrograms(self, response: Response):
 
         # Removendo o "Curso Fundamental". Irrelevante por agora
-        programsList = response.css("#dhtml_menu-3277-1 li a::text").getall().slice(1)
+        programsList = response.css("#dhtml_menu-3277-1 li a::text").getall()[1:]
 
         item = UniversidadesbrasileirasItem()
         for program in programsList:
