@@ -21,6 +21,9 @@ class USP(Spider):
         for program in programs:
             item = UniversidadesbrasileirasItem()
 
+            item["universityShortName"] = "USP"
+            item["universityLongName"] = "Universidade de São Paulo"
+
             item["program"] = program
             item["state"] = "São Paulo"
             # item['city'] = '[]'

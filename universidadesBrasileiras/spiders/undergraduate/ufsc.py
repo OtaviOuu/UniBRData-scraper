@@ -24,8 +24,10 @@ class UFSC(Spider):
 
             item = UniversidadesbrasileirasItem()
 
+            item["universityShortName"] = "UFSC"
+            item["universityLongName"] = "Universidade Federal de Santa Catarina"
+
             item["program"] = row.css("td:nth-child(1) a::text").get()
-            item["city"] = row.css("td:nth-child(4)::text").get()
             item["state"] = "Santa Catarina"
 
             yield item

@@ -1,9 +1,20 @@
 import os
 import importlib
+import asyncio
+from twisted.internet import asyncioreactor
+
+# Força o uso do AsyncioSelectorReactor
+asyncioreactor.install()
+
 from scrapy.crawler import CrawlerProcess
 import scrapy
+import multiprocessing
 
-# Maneira bem estranha para rodar todos os spiders so mesmo tempo...
+
+def run_spider(spider):
+    process = CrawlerProcess()
+    process.crawl(spider)
+    process.start()
 
 
 def main():
@@ -14,7 +25,7 @@ def main():
         "undergraduate",
     )
 
-    process = CrawlerProcess()
+    spiders = []
 
     for filename in os.listdir(undergraduate_path):
         if filename.endswith(".py") and filename != "__init__.py":
@@ -26,9 +37,16 @@ def main():
             for spider_name in dir(module):
                 spider = getattr(module, spider_name)
                 if isinstance(spider, type) and issubclass(spider, scrapy.Spider):
-                    process.crawl(spider)
+                    spiders.append(spider)
 
-    process.start()
+    processes = []
+    for spider in spiders:
+        p = multiprocessing.Process(target=run_spider, args=(spider,))
+        p.start()
+        processes.append(p)
+
+    for p in processes:
+        p.join()
 
 
 if __name__ == "__main__":

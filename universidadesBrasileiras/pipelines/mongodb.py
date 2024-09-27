@@ -7,7 +7,9 @@ class MongoDBPipeline:
     def open_spider(self, spider):
         self.client = MongoClient(spider.settings.get("MONGODB_URI"))
         self.db = self.client[spider.settings.get("MONGODB_DATABASE")]
-        self.collection = self.db["test"]
+
+        # Collection so para federal
+        self.collection = self.db["uni-teste"]
 
     def close_spider(self, spider):
         self.client.close()
