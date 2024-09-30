@@ -5,12 +5,12 @@ from twisted.internet import asyncioreactor
 
 # Força o uso do AsyncioSelectorReactor
 asyncioreactor.install()
-asx
+
 from scrapy.crawler import CrawlerProcess
 import scrapy
 import multiprocessing
 
-
+for i in range
 
 def run_spider(spider):
     process = CrawlerProcess()

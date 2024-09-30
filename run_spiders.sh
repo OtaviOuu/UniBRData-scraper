@@ -1,4 +1,4 @@
-spiders=("ita-undergraduate" "usp-undergraduate" "ufsc-undergraduate" "ufmg-undergraduate")
+spiders=("ita-undergraduate" "usp-undergraduate" "ufsc-undergraduate" "ufmg-undergraduate" "ufcg-undergraduate")
 
 for spider in "${spiders[@]}"; do
     echo "Iniciando spider $spider..."

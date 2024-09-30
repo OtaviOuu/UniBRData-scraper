@@ -27,7 +27,7 @@ USER_AGENT = ua_generator.generate().text
 
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 # CONCURRENT_REQUESTS = 32
@@ -57,6 +57,9 @@ ROBOTSTXT_OBEY = True
 # SPIDER_MIDDLEWARES = {
 #    "universidadesBrasileiras.middlewares.UniversidadesbrasileirasSpiderMiddleware": 543,
 # }
+
+
+# TODO: github.com/alecxe/scrapy-fake-useragent
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
@@ -92,7 +95,7 @@ MONGODB_DATABASE = "universidades_brasil"
 # each remote server
 # AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
 # Enable showing throttling stats for every response received:
-# AUTOTHROTTLE_DEBUG = False
+# AUTOTHROTTLE_DEBUG = True
 
 # Enable and configure HTTP caching (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
